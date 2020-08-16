@@ -1,0 +1,33 @@
+name: Test pogged.Web in Docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
+jobs:
+
+  ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build 
+      id: build
+      run: |
+        docker build pogged.Web
+
+  windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build 
+      id: build
+      run: |
+        docker build pogged.Web

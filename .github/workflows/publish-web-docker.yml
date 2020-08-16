@@ -1,0 +1,70 @@
+name: Publish pogged.Web in Docker
+
+on:
+  release:
+    types:
+      - published
+  
+jobs:
+
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get Tag
+      id: tag
+      run: |
+        tag=$(echo 'print("${{ github.ref }}".replace("refs/tags/",""))' > tag.py && python3 tag.py && rm tag.py)
+        echo "::set-output name=tag::$tag"
+
+    - name: "Preview Check" 
+      id: preview
+      run: |
+        echo "::set-output name=name::pre"
+
+    - name: Login
+      id: login
+      run: |
+        echo '${{ secrets.GITHUB_TOKEN }}' | docker login docker.pkg.github.com -u ${{ secrets.GITHUB }} --password-stdin
+      if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) }}
+
+    - name: Build
+      id: build
+      run: |
+        sudo docker build pogged.Web -t docker.pkg.github.com/pogged/pogged/pogged.web:${{ steps.tag.outputs.tag }}
+      if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) != true }}
+    
+    - name: Publish
+      id: publish
+      run: |
+        docker push docker.pkg.github.com/pogged/pogged/pogged.web:${{ steps.tag.outputs.tag }}
+      if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) != true }}
+ 
+  preview:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Login
+      id: login
+      run: |
+        echo '${{ secrets.GITHUB_TOKEN }}' | docker login docker.pkg.github.com -u ${{ secrets.GITHUB }} --password-stdin
+
+    - name: Get Tag
+      id: tag
+      run: |
+        tag=$(echo 'print("${{ github.ref }}".replace("refs/tags/",""))' > tag.py && python3 tag.py && rm tag.py)
+        echo "::set-output name=tag::$tag"
+
+    - name: Build
+      id: build
+      run: |
+        sudo docker build pogged.Web -t docker.pkg.github.com/pogged/pogged/preview.pogged.web:${{ steps.tag.outputs.tag }}
+
+    - name: Publish
+      id: publish
+      run: |
+        docker push docker.pkg.github.com/pogged/pogged/preview.pogged.web:${{ steps.tag.outputs.tag }}

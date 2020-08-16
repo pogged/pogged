@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30404.54
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pogged", "pogged\pogged.csproj", "{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pogged.Web", "pogged.Web\pogged.Web.csproj", "{F374EAE4-44F3-40C5-8393-70892457DD23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F374EAE4-44F3-40C5-8393-70892457DD23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F374EAE4-44F3-40C5-8393-70892457DD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F374EAE4-44F3-40C5-8393-70892457DD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F374EAE4-44F3-40C5-8393-70892457DD23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96CE7BFE-88DA-47A8-BD3D-5F0C234702A9}
+	EndGlobalSection
+EndGlobal
