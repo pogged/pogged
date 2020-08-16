@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySqlConnector;
 
 namespace pogged.Web
 {
@@ -23,6 +24,24 @@ namespace pogged.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string serverName = Configuration.GetValue<string>("serverName");
+            uint port = Configuration.GetValue<uint>("port");
+            string userId = Configuration.GetValue<string>("userId");
+            string password = Configuration.GetValue<string>("password");
+
+            MySqlConnectionStringBuilder ConnectionBuilder = new MySqlConnectionStringBuilder();
+            ConnectionBuilder.Server = Configuration.GetValue<string>("server");
+            ConnectionBuilder.Port = Configuration.GetValue<uint>("port");
+            ConnectionBuilder.UserID = Configuration.GetValue<string>("user");
+            ConnectionBuilder.Password = Configuration.GetValue<string>("password");
+            ConnectionBuilder.Database = Configuration.GetValue<string>("database");
+            ConnectionBuilder.AllowUserVariables = true;
+
+            MySqlConnection MySQL = new MySqlConnection(ConnectionBuilder.ConnectionString);
+            MySQL.Open();
+
+            services.AddTransient(e => MySQL);
+
             services.AddRazorPages();
         }
 
