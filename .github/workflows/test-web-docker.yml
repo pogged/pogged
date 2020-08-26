@@ -10,19 +10,10 @@ on:
   
 jobs:
 
+  # No Build Support for Windows and macOS
+
   ubuntu:
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Build 
-      id: build
-      run: |
-        docker build pogged.Web
-
-  windows:
-    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2

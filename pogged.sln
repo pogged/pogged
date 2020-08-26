@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30404.54
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pogged", "pogged\pogged.csproj", "{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pogged.Web", "pogged.Web\pogged.Web.csproj", "{F374EAE4-44F3-40C5-8393-70892457DD23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pogged.Web", "pogged.Web\pogged.Web.csproj", "{327A7090-3E12-4381-92BE-B59CA4581536}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,14 @@ Global
 		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E3C33F-468C-4B3E-926B-7A6C2D8BDB9B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F374EAE4-44F3-40C5-8393-70892457DD23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F374EAE4-44F3-40C5-8393-70892457DD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F374EAE4-44F3-40C5-8393-70892457DD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F374EAE4-44F3-40C5-8393-70892457DD23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327A7090-3E12-4381-92BE-B59CA4581536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327A7090-3E12-4381-92BE-B59CA4581536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327A7090-3E12-4381-92BE-B59CA4581536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327A7090-3E12-4381-92BE-B59CA4581536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39C4A0B-B109-4B9F-A3B0-C3D145C710E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39C4A0B-B109-4B9F-A3B0-C3D145C710E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39C4A0B-B109-4B9F-A3B0-C3D145C710E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39C4A0B-B109-4B9F-A3B0-C3D145C710E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

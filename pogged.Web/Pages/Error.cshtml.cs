@@ -12,16 +12,15 @@ namespace pogged.Web.Pages
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel
     {
+        private readonly ILogger<ErrorModel> logger;
+
+        public ErrorModel(ILogger<ErrorModel> _logger)
+        {
+            logger = _logger;
+        }
         public string RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-
-        private readonly ILogger<ErrorModel> _logger;
-
-        public ErrorModel(ILogger<ErrorModel> logger)
-        {
-            _logger = logger;
-        }
 
         public void OnGet()
         {
