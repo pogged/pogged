@@ -47,7 +47,7 @@
     "@types/reactstrap": "8.0.6",
     "@types/request": "^2.48.5",
     "@typescript-eslint/parser": "^2.5.0",
-    "cross-env": "6.0.3",
+    "cross-env": "7.0.2",
     "eslint": "^6.5.1",
     "eslint-plugin-flowtype": "^3.13.0",
     "eslint-plugin-import": "2.18.2",
