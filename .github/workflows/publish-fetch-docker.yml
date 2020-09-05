@@ -1,4 +1,4 @@
-name: Publish pogged.Web in Docker
+name: Publish pogged.Fetch in Docker
 
 on:
   release:
@@ -28,23 +28,29 @@ jobs:
       id: login
       run: |
         echo '${{ secrets.GITHUB_TOKEN }}' | docker login docker.pkg.github.com -u ${{ secrets.GITHUB }} --password-stdin
-      if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) }}
+      if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) != true }}
 
     - name: Prepare
       id: prepare
       run: |
-       rsync -a --exclude pogged.Web/app . pogged.Web/app
+        rsync -a --exclude pogged.Fetch/app . pogged.Fetch/app
+
+    - name: Prepare
+      id: prepare
+      run: |
+        rsync -a --exclude pogged.Fetch/app . pogged.Fetch/app
+      if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) != true }}
 
     - name: Build
       id: build
       run: |
-        sudo docker build pogged.Web -t docker.pkg.github.com/pogged/pogged/pogged.web:${{ steps.tag.outputs.tag }}
+        sudo docker build pogged.Fetch -t docker.pkg.github.com/pogged/pogged/pogged.fetch:${{ steps.tag.outputs.tag }}
       if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) != true }}
 
     - name: Publish
       id: publish
       run: |
-        docker push docker.pkg.github.com/pogged/pogged/pogged.web:${{ steps.tag.outputs.tag }}
+        docker push docker.pkg.github.com/pogged/pogged/pogged.fetch:${{ steps.tag.outputs.tag }}
       if: ${{ contains(steps.tag.outputs.tag, steps.preview.outputs.name) != true }}
 
   preview:
@@ -64,12 +70,17 @@ jobs:
         tag=$(echo 'print("${{ github.ref }}".replace("refs/tags/",""))' > tag.py && python3 tag.py && rm tag.py)
         echo "::set-output name=tag::$tag"
 
+    - name: Prepare
+      id: prepare
+      run: |
+        rsync -a --exclude pogged.Fetch/app . pogged.Fetch/app
+
     - name: Build
       id: build
       run: |
-        sudo docker build pogged.Web -t docker.pkg.github.com/pogged/pogged/preview.pogged.web:${{ steps.tag.outputs.tag }}
+        sudo docker build pogged.Fetch -t docker.pkg.github.com/nonamepro0/tempworkflows/preview.pogged.fetch:${{ steps.tag.outputs.tag }}
 
     - name: Publish
       id: publish
       run: |
-        docker push docker.pkg.github.com/pogged/pogged/preview.pogged.web:${{ steps.tag.outputs.tag }}
+        docker push docker.pkg.github.com/nonamepro0/tempworkflows/preview.pogged.fetch:${{ steps.tag.outputs.tag }}

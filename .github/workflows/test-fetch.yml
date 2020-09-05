@@ -1,0 +1,95 @@
+name: Test pogged.Fetch
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
+jobs:
+
+  ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      id: setup_dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100-preview.2.20176.6
+
+    - name: Go to pogged.Fetch
+      id: cd
+      run: cd pogged.Fetch
+
+    - name: Install dependencies
+      id: restore
+      run: dotnet restore
+
+    - name: Build
+      id: build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      id: test
+      run: dotnet test --no-restore --verbosity normal
+
+  windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      id: setup_dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100-preview.2.20176.6
+
+    - name: Go to pogged.Fetch
+      id: cd
+      run: cd pogged.Fetch
+
+    - name: Install dependencies
+      id: restore
+      run: dotnet restore
+
+    - name: Build
+      id: build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      id: test
+      run: dotnet test --no-restore --verbosity normal
+
+  macos: 
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      id: setup_dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100-preview.2.20176.6
+
+    - name: Go to pogged.Fetch
+      id: cd
+      run: cd pogged.Fetch
+
+    - name: Install dependencies
+      id: restore
+      run: dotnet restore
+
+    - name: Build
+      id: build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      id: test
+      run: dotnet test --no-restore --verbosity normal

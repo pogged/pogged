@@ -1,4 +1,4 @@
-name: Test pogged.Web in Docker
+name: Test pogged.Fetch in Docker
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-
+  
 jobs:
 
   # No Build Support for Windows and macOS
@@ -17,13 +17,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+    
     - name: Prepare
       id: prepare
       run: |
-        rsync -a --exclude pogged.Web/app . pogged.Web/app
+        rsync -a --exclude pogged.Fetch/app . pogged.Fetch/app
 
-    - name: Build
+    - name: Build 
       id: build
       run: |
-        docker build pogged.Web
+        docker build pogged.Fetch

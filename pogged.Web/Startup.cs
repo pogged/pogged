@@ -1,3 +1,4 @@
+using Dapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,8 @@ namespace pogged.Web
 
             MySqlConnection MySQL = new MySqlConnection(ConnectionBuilder.ConnectionString);
             MySQL.Open();
+
+            MySQL.Query(pogged.Sql.CreateTables);
 
             services.AddTransient(e => MySQL);
 
