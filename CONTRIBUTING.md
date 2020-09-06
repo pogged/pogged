@@ -2,17 +2,6 @@
 
 **Thanks to all how want to contribute. We're depend on our open source community**
 
-## Issues
-
-###### How to Do?
-
-1. Click on [New Issue](https://github.com/pogged/pogged/issues/new)
-2. Choose a issue template
-3. Write your Text from the template
-4. Submit issue
-
-## Pull Request
-
 ###### How to Do?
 
 1. Create a fork
@@ -21,6 +10,7 @@
     * `dev/issue/<issue_number>` - For submit something for a issue
     * Use `docs/` instead of `dev/`, if you edit some docs
 3. Make changes
+   * Read: [Development Guide](https://github.com/pogged/pogged/wiki/Development-Guide)
 4. Commit like following:
     * `add: IndexPage` - For add stuff like a feature
     * `fix: XSS on RSS Elements` - For fixing bugs or security issues
@@ -29,6 +19,7 @@
 6. Write your Description from the template
     * If you would to close/fix a issue, type somewhere: `Closes #<issue_number>` or use another [closing keywords](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
 7. Submit pull request
+8. If GitHub checks failed, please fix them. And commit to same branch 
 
 ## Notes
 
